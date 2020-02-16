@@ -8,7 +8,6 @@ import 'package:ezar/ui/profile_page.dart';
 import 'package:ezar/utils/fab_bottom_app_bar.dart';
 import 'package:flutter/services.dart';
 import 'package:dio/dio.dart';
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -109,7 +108,9 @@ class _MainPageState extends State<MainPage>
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {JumpToAR();},
+        onPressed: () {
+          JumpToAR();
+        },
         tooltip: 'Scanning AR',
         child: Icon(Icons.camera_alt),
         elevation: 2.0,

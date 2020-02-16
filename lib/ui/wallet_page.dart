@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ezar/style/theme.dart' as MTheme;
 import 'package:cached_network_image/cached_network_image.dart';
 
-
 class WalletPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return WalletPageState();
   }
 }
@@ -14,7 +12,6 @@ class WalletPage extends StatefulWidget {
 class WalletPageState extends State<WalletPage>
     with AutomaticKeepAliveClientMixin {
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   Widget _buildCoverImage(Size screenSize) {
@@ -42,8 +39,13 @@ class WalletPageState extends State<WalletPage>
             title: new Text("Scan QR Code"),
             children: <Widget>[
               CachedNetworkImage(
-                imageUrl:"https://firebasestorage.googleapis.com/v0/b/ez-ar-47896.appspot.com/o/IDPics%2FQR.png?alt=media&token=04a0f65f-edd7-4175-a582-e72f8fdaa63d",
-                placeholder: (context, url) => new CircularProgressIndicator(),
+                imageUrl:
+                    "https://firebasestorage.googleapis.com/v0/b/ez-ar-47896.appspot.com/o/IDPics%2FQR.png?alt=media&token=04a0f65f-edd7-4175-a582-e72f8fdaa63d",
+                placeholder: (context, url) => new SizedBox(
+                  child: new CircularProgressIndicator(),
+                  height: 200.0,
+                  width: 200.0,
+                ),
                 errorWidget: (context, url, error) => new Icon(Icons.error),
                 fit: BoxFit.fill,
               )
@@ -57,10 +59,11 @@ class WalletPageState extends State<WalletPage>
         context: context,
         builder: (context) {
           return new SimpleDialog(
-            title: new Text("Scan Bar Code"),
+            title: new Text("Scan Coupon"),
             children: <Widget>[
               CachedNetworkImage(
-                imageUrl:"https://firebasestorage.googleapis.com/v0/b/ez-ar-47896.appspot.com/o/IDPics%2Fbarcode.png?alt=media&token=0a6ef443-0dab-4838-8419-0e0688bf14de",
+                imageUrl:
+                    "https://firebasestorage.googleapis.com/v0/b/ez-ar-47896.appspot.com/o/IDPics%2Fbarcode.png?alt=media&token=0a6ef443-0dab-4838-8419-0e0688bf14de",
                 placeholder: (context, url) => new CircularProgressIndicator(),
                 errorWidget: (context, url, error) => new Icon(Icons.error),
                 fit: BoxFit.fill,
@@ -70,16 +73,14 @@ class WalletPageState extends State<WalletPage>
         });
   }
 
-
   Widget _buildCard(BuildContext context) {
     return new SizedBox(
-      height: MediaQuery.of(context).size.height - 200, //设置高度
+      height: MediaQuery.of(context).size.height - 200,
       child: new Card(
-        elevation: 0, //设置阴影
+        elevation: 0,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(0))), //设置圆角
+            borderRadius: BorderRadius.all(Radius.circular(0))),
         child: new Column(
-          // card只能有一个widget，但这个widget内容可以包含其他的widget
           children: [
             new ListTile(
               title: new Text('Cards',
@@ -97,7 +98,7 @@ class WalletPageState extends State<WalletPage>
                 Icons.local_drink,
                 color: Colors.blue[500],
               ),
-              onTap: (){
+              onTap: () {
                 showBarCode(context);
               },
             ),
@@ -109,7 +110,7 @@ class WalletPageState extends State<WalletPage>
                 Icons.local_drink,
                 color: Colors.blue[500],
               ),
-              onTap: (){
+              onTap: () {
                 showBarCode(context);
               },
             ),
@@ -125,12 +126,12 @@ class WalletPageState extends State<WalletPage>
             ),
             new ListTile(
               title: new Text('Bake Chef'),
-              subtitle: new Text('30% OFF'),
+              subtitle: new Text('96% OFF'),
               leading: new Icon(
                 Icons.restaurant,
                 color: Colors.blue[500],
               ),
-              onTap: (){
+              onTap: () {
                 showQRCode(context);
               },
             ),
@@ -141,7 +142,7 @@ class WalletPageState extends State<WalletPage>
                 Icons.restaurant,
                 color: Colors.blue[500],
               ),
-              onTap: (){
+              onTap: () {
                 showQRCode(context);
               },
             ),
@@ -160,7 +161,7 @@ class WalletPageState extends State<WalletPage>
     );
 
     return Text(
-      'Deals Page',
+      '🔥Hot Deals',
       style: _nameTextStyle,
     );
   }
@@ -192,7 +193,6 @@ class WalletPageState extends State<WalletPage>
                           Center(
                             child: _buildHead(),
                           ),
-                          //SizedBox(height: 15.0),
                         ],
                       ),
                     ),

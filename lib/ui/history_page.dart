@@ -4,7 +4,6 @@ import 'package:ezar/style/theme.dart' as MTheme;
 class HistoryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return HistoryPageState();
   }
 }
@@ -12,7 +11,6 @@ class HistoryPage extends StatefulWidget {
 class HistoryPageState extends State<HistoryPage>
     with AutomaticKeepAliveClientMixin {
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   Widget _buildCoverImage(Size screenSize) {
@@ -41,28 +39,24 @@ class HistoryPageState extends State<HistoryPage>
     );
 
     return Text(
-      'History Page',
+      'History',
       style: _nameTextStyle,
     );
   }
 
   Widget _buildCard() {
     return new SizedBox(
-      height: MediaQuery
-          .of(context)
-          .size.height-200, //设置高度
+      height: MediaQuery.of(context).size.height - 200,
       child: new Card(
-        elevation: 0, //设置阴影
+        elevation: 0,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(0))), //设置圆角
-        child: new Column( // card只能有一个widget，但这个widget内容可以包含其他的widget
+            borderRadius: BorderRadius.all(Radius.circular(0))),
+        child: new Column(
           children: [
             new ListTile(
               title: new Text('Today',
                   style: new TextStyle(fontWeight: FontWeight.w300)),
-
             ),
-
             new ListTile(
               title: new Text('Kobe Beef',
                   style: new TextStyle(fontWeight: FontWeight.w500)),
@@ -72,8 +66,6 @@ class HistoryPageState extends State<HistoryPage>
                 color: Colors.blue[500],
               ),
             ),
-
-
             new Divider(),
             new Divider(),
             new ListTile(
@@ -87,7 +79,8 @@ class HistoryPageState extends State<HistoryPage>
                 Icons.local_drink,
                 color: Colors.blue[500],
               ),
-            ), new ListTile(
+            ),
+            new ListTile(
               title: new Text('Bake Chef'),
               subtitle: new Text('February 15, 2020'),
               leading: new Icon(
@@ -96,54 +89,46 @@ class HistoryPageState extends State<HistoryPage>
               ),
             ),
           ],
-
         ),
-
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    Size screenSize = MediaQuery.of(context).size;
     double aHeight;
-    aHeight = MediaQuery
-        .of(context)
-        .padding
-        .top;
+    aHeight = MediaQuery.of(context).padding.top;
 
     if (aHeight == 44) {
       aHeight = 0;
-    }else if (aHeight == 0 || aHeight == 20) {
+    } else if (aHeight == 0 || aHeight == 20) {
       aHeight = 25;
     }
     return Scaffold(
       body: new Column(
-          children: <Widget>[
-      new Stack(
-      children: <Widget>[
-          _buildCoverImage(screenSize),
-      SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
+        children: <Widget>[
+          new Stack(
             children: <Widget>[
-              SizedBox(height: aHeight),
-              Center(
-                child: _buildHead(),
+              _buildCoverImage(screenSize),
+              SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: aHeight),
+                      Center(
+                        child: _buildHead(),
+                      ),
+                      //SizedBox(height: 15.0),
+                    ],
+                  ),
+                ),
               ),
-              //SizedBox(height: 15.0),
             ],
           ),
-        ),
+          _buildCard(),
+        ],
       ),
-      ],
-    ),
-    _buildCard(),
-
-    ],
-    ),
     );
   }
 }

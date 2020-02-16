@@ -16,9 +16,6 @@ import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-
-
-
 class ProfilePage extends StatefulWidget {
   String user_id;
 
@@ -35,9 +32,6 @@ class ProfilePageState extends State<ProfilePage>
     with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
   String _fullName;
   String _profilelink;
-
-
-
 
   loadData() async {
     print(widget.user_id);
@@ -71,12 +65,9 @@ class ProfilePageState extends State<ProfilePage>
     }
 
     super.initState();
-
   }
 
-
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   Widget _buildCoverImage(Size screenSize) {
@@ -115,12 +106,7 @@ class ProfilePageState extends State<ProfilePage>
               ),
             ),
           ),
-          onTap: () {
-//            Navigator.push(context,
-//                new MaterialPageRoute(builder: (BuildContext context) {
-//              return new UploadPics();
-//            }));
-          },
+          onTap: () {},
         ),
       );
     } else {
@@ -141,12 +127,7 @@ class ProfilePageState extends State<ProfilePage>
               ),
             ),
           ),
-          onTap: () {
-//            Navigator.push(context,
-//                new MaterialPageRoute(builder: (BuildContext context) {
-//              return new UploadPics();
-//            }));
-          },
+          onTap: () {},
         ),
       );
     }
@@ -177,176 +158,12 @@ class ProfilePageState extends State<ProfilePage>
           new Tab(
             text: "Discover",
           ),
-          new Tab(
-            text: "Favourites",
-          ),
         ],
         labelColor: Colors.black,
         indicatorColor: Colors.deepOrangeAccent,
       ),
     );
   }
-
-//
-//  Widget _buildStatus(BuildContext context) {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 6.0),
-//      decoration: BoxDecoration(
-//        color: Theme.of(context).scaffoldBackgroundColor,
-//        borderRadius: BorderRadius.circular(4.0),
-//      ),
-//      child: Text(
-//        _status,
-//        style: TextStyle(
-//          fontFamily: 'Spectral',
-//          color: Colors.black,
-//          fontSize: 20.0,
-//          fontWeight: FontWeight.w300,
-//        ),
-//      ),
-//    );
-//  }
-//
-//  Widget _buildStatItem(String label, String count) {
-//    TextStyle _statLabelTextStyle = TextStyle(
-//      fontFamily: 'Roboto',
-//      color: Colors.black,
-//      fontSize: 16.0,
-//      fontWeight: FontWeight.w200,
-//    );
-//
-//    TextStyle _statCountTextStyle = TextStyle(
-//      color: Colors.black54,
-//      fontSize: 24.0,
-//      fontWeight: FontWeight.bold,
-//    );
-//
-//    return Column(
-//      mainAxisAlignment: MainAxisAlignment.center,
-//      children: <Widget>[
-//        Text(
-//          count,
-//          style: _statCountTextStyle,
-//        ),
-//        Text(
-//          label,
-//          style: _statLabelTextStyle,
-//        ),
-//      ],
-//    );
-//  }
-//
-//  Widget _buildStatContainer() {
-//    return Container(
-//      height: 60.0,
-//      margin: EdgeInsets.only(top: 8.0),
-//      decoration: BoxDecoration(
-//        color: Color(0xFFEFF4F7),
-//      ),
-//      child: Row(
-//        mainAxisAlignment: MainAxisAlignment.spaceAround,
-//        children: <Widget>[
-//          _buildStatItem("Followers", _followers),
-//          _buildStatItem("Posts", _posts),
-//          _buildStatItem("Scores", _scores),
-//        ],
-//      ),
-//    );
-//  }
-//
-//  Widget _buildBio(BuildContext context) {
-//    TextStyle bioTextStyle = TextStyle(
-//      fontFamily: 'Spectral',
-//      fontWeight: FontWeight.w400,
-//      //try changing weight to w500 if not thin
-//      fontStyle: FontStyle.italic,
-//      color: Color(0xFF799497),
-//      fontSize: 16.0,
-//    );
-//
-//    return Container(
-//      color: Theme.of(context).scaffoldBackgroundColor,
-//      padding: EdgeInsets.all(8.0),
-//      child: Text(
-//        _bio,
-//        textAlign: TextAlign.center,
-//        style: bioTextStyle,
-//      ),
-//    );
-//  }
-//
-//  Widget _buildSeparator(Size screenSize) {
-//    return Container(
-//      width: screenSize.width / 1.6,
-//      height: 2.0,
-//      color: Colors.black54,
-//      margin: EdgeInsets.only(top: 4.0),
-//    );
-//  }
-//
-//  Widget _buildGetInTouch(BuildContext context) {
-//    return Container(
-//      color: Theme.of(context).scaffoldBackgroundColor,
-//      padding: EdgeInsets.only(top: 8.0),
-//      child: Text(
-//        "Get in Touch with ${_fullName.split(" ")[0]},",
-//        style: TextStyle(fontFamily: 'Roboto', fontSize: 16.0),
-//      ),
-//    );
-//  }
-//
-//  Widget _buildButtons() {
-//    return Padding(
-//      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-//      child: Row(
-//        children: <Widget>[
-//          Expanded(
-//            child: InkWell(
-//              onTap: () => print("followed"),
-//              child: Container(
-//                height: 40.0,
-//                decoration: BoxDecoration(
-//                  border: Border.all(),
-//                  color: Color(0xFF404A5C),
-//                ),
-//                child: Center(
-//                  child: Text(
-//                    "FOLLOW",
-//                    style: TextStyle(
-//                      color: Colors.white,
-//                      fontWeight: FontWeight.w600,
-//                    ),
-//                  ),
-//                ),
-//              ),
-//            ),
-//          ),
-//          SizedBox(width: 10.0),
-//          Expanded(
-//            child: InkWell(
-//              onTap: () => print("Message"),
-//              child: Container(
-//                height: 40.0,
-//                decoration: BoxDecoration(
-//                  border: Border.all(),
-//                ),
-//                child: Center(
-//                  child: Padding(
-//                    padding: EdgeInsets.all(10.0),
-//                    child: Text(
-//                      "MESSAGE",
-//                      style: TextStyle(fontWeight: FontWeight.w600),
-//                    ),
-//                  ),
-//                ),
-//              ),
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-
 
   bool check = true;
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -357,7 +174,6 @@ class ProfilePageState extends State<ProfilePage>
     double aHeight;
     aHeight = MediaQuery.of(context).padding.top;
 
-
     if (aHeight == 44) {
       aHeight = 10;
     }
@@ -367,7 +183,7 @@ class ProfilePageState extends State<ProfilePage>
     }
 
     return new DefaultTabController(
-      length: 2,
+      length: 1,
       child: new Scaffold(
         body: new Column(
           children: <Widget>[
@@ -396,35 +212,34 @@ class ProfilePageState extends State<ProfilePage>
                   new Column(
                     children: <Widget>[
                       new PicSwiper(),
-                      SizedBox(height: check ? screenSize.height * 0.1 : screenSize.height * 0.18,),
+                      SizedBox(
+                        height: check
+                            ? screenSize.height * 0.1
+                            : screenSize.height * 0.18,
+                      ),
                       new RaisedButton(
-                        child: check ? Text("Open Room Finder") : Text("Close Room Finder"),
+                        child: check
+                            ? Text("Open Room Finder")
+                            : Text("Close Room Finder"),
                         onPressed: () {
-
-                          if (check == true){
+                          if (check == true) {
                             flutterWebviewPlugin.launch(
                               "https://ucmapspro.ucalgary.ca/RoomFinder/",
                               rect: Rect.fromLTWH(
-                                  0.0, 0.0, MediaQuery.of(context).size.width, screenSize.height * 0.75),
+                                  0.0,
+                                  0.0,
+                                  MediaQuery.of(context).size.width,
+                                  screenSize.height * 0.75),
                             );
                             check = false;
-                          }else{
+                          } else {
                             flutterWebviewPlugin.close();
                             check = true;
                           }
 
-                          setState(() {
-
-                          });
+                          setState(() {});
                         },
                       ),
-
-
-                    ],
-                  ),
-                  new Column(
-                    children: <Widget>[
-
                     ],
                   ),
                 ],
@@ -435,7 +250,4 @@ class ProfilePageState extends State<ProfilePage>
       ),
     );
   }
-
-
-
 }
