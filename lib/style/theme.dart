@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 class Colors {
-
   const Colors();
 
-  static const Color loginGradientStart = const Color(0xFFfbab66);
-  static const Color loginGradientEnd = const Color(0xFFf7418c);
+// #ed1c24
+  static const Color loginGradientStart = const Color(0xFFed1c24);
+  static const Color loginGradientEnd = const Color(0xFFffcd00);
 
   static const primaryGradient = const LinearGradient(
     colors: const [loginGradientStart, loginGradientEnd],
