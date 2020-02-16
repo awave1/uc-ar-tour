@@ -322,9 +322,7 @@ class _LoginPageState extends State<LoginPage>
                     onPressed: () {
                       // Login action
 
-                      //_signIn('jian.liao1@ucalgary.ca', 'testing');
                       Response response;
-                      //Response re;
                       run() async {
                         response = await Dio().post(
                             "https://ez-ar.herokuapp.com/users/login",
@@ -369,6 +367,8 @@ class _LoginPageState extends State<LoginPage>
                           showInSnackBar("Login Failed! Empty Return!");
                         }
                       }
+
+                      run();
                     },
                   )),
             ],
