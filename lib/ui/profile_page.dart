@@ -15,6 +15,9 @@ import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:camera/camera.dart';
+
+List<CameraDescription> cameras;
 
 class ProfilePage extends StatefulWidget {
   String user_id;
@@ -158,6 +161,9 @@ class ProfilePageState extends State<ProfilePage>
           new Tab(
             text: "Discover",
           ),
+          new Tab(
+            text: "AR Navigation",
+          ),
         ],
         labelColor: Colors.black,
         indicatorColor: Colors.deepOrangeAccent,
@@ -183,7 +189,7 @@ class ProfilePageState extends State<ProfilePage>
     }
 
     return new DefaultTabController(
-      length: 1,
+      length: 2,
       child: new Scaffold(
         body: new Column(
           children: <Widget>[
@@ -242,6 +248,12 @@ class ProfilePageState extends State<ProfilePage>
                       ),
                     ],
                   ),
+                  new Column(
+                    children: <Widget>[
+                      // new CameraApp()
+                      new Text("AR Navigation")
+                    ],
+                  )
                 ],
               ),
             ),
@@ -249,5 +261,42 @@ class ProfilePageState extends State<ProfilePage>
         ),
       ),
     );
+  }
+}
+
+class CameraApp extends StatefulWidget {
+  @override
+  _CameraAppState createState() => _CameraAppState();
+}
+
+class _CameraAppState extends State<CameraApp> {
+  CameraController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = CameraController(cameras[0], ResolutionPreset.medium);
+    controller.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!controller.value.isInitialized) {
+      return Container();
+    }
+    return AspectRatio(
+        aspectRatio: controller.value.aspectRatio,
+        child: CameraPreview(controller));
   }
 }
